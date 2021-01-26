@@ -1,7 +1,5 @@
 (async ($d3, $genres, $months, $headers) => {
 
-
-
   const rangeOfYears = (start, end) => Array(end - start + 1).fill(start).map((year, index) => year + index);
 
   const asyncForEach = async (array, callback) => {
@@ -23,7 +21,9 @@
 
   const mainContainer = $d3.select('body').append('div').attr('id', 'mainContainer').attr('class', 'container');
 
-  mainContainer.append('h1').attr('id', 'top').text('TMDB New Releases');
+  mainContainer.append('h1').attr('id', 'top').text('Flick');
+
+  mainContainer.append('p').attr('id', 'top').text('View new releases of movies from The Movie Database by year and genre.');
 
   const optionsDiv = mainContainer.append('div').attr('id', 'options');
   const yearDiv = optionsDiv.append('div').attr('id', 'year');
@@ -37,7 +37,7 @@
   const yearSelect = yearDiv.append('select').attr('id', 'yearSelect').on('change', function(event) {
     const currentGenre = document.getElementById('genreSelect').value;
     const currentYear = document.getElementById('yearSelect').value;
-    // getMovieDataForYear(currentYear, currentGenre);
+    getMovieDataForYear(currentYear, currentGenre);
   });
 
   yearSelect.selectAll('option').data(rangeOfYears(minYear, maxYear).reverse()).enter().append('option').text(function(d) {
@@ -92,7 +92,7 @@
 
         monthDivHeader.append('div').attr('class', 'header-container').append('h4').text(`${month} ${year}`);
 
-        monthDivHeader.append('a').attr('href', '#top').text('top');
+        //monthDivHeader.append('a').attr('href', '#top').text('top');
 
         const table = monthDiv.append('table').attr('class', 'table').attr('class', 'movie-table');
 
@@ -124,5 +124,5 @@
       }
     });
   };
-
+  await getMovieDataForYear(2021, $genres[0].id);
 })(d3, genres, months, desiredHeaders);

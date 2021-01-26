@@ -1,10 +1,20 @@
 * {
   margin: 0;
-  font-family: 'Franklin Gothic Medium: Arial Narrow', Arial, sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
+body {
+  background-color:#d0e8f2;
+  color: #456268;
+}
+
+h1 {
+  font-size:5rem;
+}
+
+
 .title {
-  font-size: 1rem;
+  font-size: 2rem;
   font-weight: bold;
 }
 
@@ -69,9 +79,7 @@ select {
   font-size: 1rem;
 }
 .movie-table-head {
-  border: 1px black solid;
   padding: 5px;
-  background-color: lightgray;
   font-weight: bold;
   text-transform: uppercase;
 }
